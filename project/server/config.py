@@ -1,6 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-postgres_local_base = 'postgresql://postgresql-rugged-18806/'
+postgres_local_base = 'postgres://qhlayvrmlbvoyi:fcf0b1968c6bea21655e54aac3a73937efa3ea5fa12f6b6add99d8a8b63e730a@ec2-44-194-4-127.compute-1.amazonaws.com:5432/dcqkrf59eg3p7d/'
 database_name = 'diagnostic'
 
 
