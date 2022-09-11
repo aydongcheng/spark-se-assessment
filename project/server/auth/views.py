@@ -56,7 +56,7 @@ class RegisterAPI(MethodView):
 
 
 class GetUserListAPI(MethodView):
-    def post(self):
+    def get(self):
         # insert the user
         userList = User.query.all()
         result = []
@@ -81,5 +81,5 @@ auth_blueprint.add_url_rule(
 auth_blueprint.add_url_rule(
     '/users/index',
     view_func=getUserList_view,
-    methods=['POST']
+    methods=['GET']
 )
