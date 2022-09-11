@@ -34,9 +34,9 @@ db = SQLAlchemy(app)
 from project.server.models import User
 migrate = Migrate(app, db)
 
-# @app.route("/")
-# def root_site():
-#     return "<p>It works!</p>"
+@app.route("/")
+def root_site():
+    return "<p>It works!</p>"
 
 from project.server.auth.views import auth_blueprint
 app.register_blueprint(auth_blueprint)
