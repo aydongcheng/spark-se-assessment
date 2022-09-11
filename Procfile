@@ -1,4 +1,4 @@
-web: gunicorn manage:app
+web: gunicorn project.server
 heroku ps:scale web=1
 
 
