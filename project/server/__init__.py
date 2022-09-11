@@ -32,7 +32,7 @@ bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
 from project.server.models import User
-migrate = Migrate(app, db, directory='migrations')
+migrate = Migrate(app, db, directory='/migrations')
 
 @app.route("/")
 def root_site():
