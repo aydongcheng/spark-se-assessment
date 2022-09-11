@@ -1,6 +1,7 @@
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
-postgres_local_base = 'postgres://qhlayvrmlbvoyi:fcf0b1968c6bea21655e54aac3a73937efa3ea5fa12f6b6add99d8a8b63e730a@ec2-44-194-4-127.compute-1.amazonaws.com:5432/dcqkrf59eg3p7d/'
+postgres_local_base = 'sqlite:///'
 database_name = 'diagnostic'
 
 
@@ -16,7 +17,8 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
-    SQLALCHEMY_DATABASE_URI = postgres_local_base + database_name
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace('postgres://', 'postgresql://') or \
+                              postgres_local_base + database_name
 
 
 class TestingConfig(BaseConfig):
