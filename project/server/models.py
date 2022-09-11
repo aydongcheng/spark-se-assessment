@@ -22,6 +22,10 @@ class User(db.Model):
         self.registered_on = datetime.datetime.now()
         self.admin = admin
 
+    def to_json(self):
+        return {"admin": self.admin, "id": self.id,
+                "email": self.email, "registered_on": self.registered_on}
+
     def encode_auth_token(self, user_id):
         """
         Generates the Auth Token
@@ -49,7 +53,7 @@ class User(db.Model):
         :return: integer|string
         """
         try:
-            payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+            payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'), algorithms='HS256')
             return payload['sub']
         except jwt.ExpiredSignatureError:
             return 'Signature expired. Please log in again.'
